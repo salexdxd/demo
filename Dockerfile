@@ -1,11 +1,5 @@
-FROM eclipse-temurin:17-jdk-focal
+FROM openjdk:17
 
-WORKDIR /app
+COPY target/demo-0.0.1-SNAPSHOT.jar demo.jar
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "/demo.jar"]
