@@ -1,0 +1,17 @@
+version: '4'
+services:
+  app:
+    container_name: myspring-mysql
+    image: mastilo/anotherimage
+    build: ./
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demodb
